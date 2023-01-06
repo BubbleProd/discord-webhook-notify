@@ -10,7 +10,10 @@ inputs:
   severity:
     description: Severity level - info, warn, or error
     required: false
-    default: error
+    default: error  
+  title:
+    description: Embed notification title.
+    required: false
   description:
     description: Embed notification message. Use context expressions and environment variables to provide information. Default provides branch and user info.
     required: false
