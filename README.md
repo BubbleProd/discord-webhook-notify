@@ -4,8 +4,8 @@ This sends a notification to discord using a webhook URL. It is written in JavaS
 
 To use this, get on Discord and create a new webhook. Then get on GitHub, go into your project settings, and add a new Secret called `DISCORD_WEBHOOK`. In your workflow YAML, set `webhookUrl` as follows: `webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}`. You must set webhookUrl this way for each invocation of the action.
 
-- Use `rjstone/discord-webhook-notify@v1` if you want bugfixes but nothing backward-compatability breaking. (If anything breaks compatability it will be in v2+.)
-- Use `rjstone/discord-webhook-notify@v1.0.0` (or another specific tag after the @) if you want to guarantee use of a specific revision.
+- Use `BubbleProd/discord-webhook-notify@v2` if you want bugfixes but nothing backward-compatability breaking.
+- Use `BubbleProd/discord-webhook-notify@v2.0.0` (or another specific tag after the @) if you want to guarantee use of a specific revision.
 
 See below for more documentation and detailed examples.
 
@@ -85,19 +85,19 @@ This shows the appearance of notifications where most of the inputs are left at 
 
 ```
 - name: Test Info
-    uses: rjstone/discord-webhook-notify@v1
+    uses: BubbleProd/discord-webhook-notify@v2
     with:
         severity: info
         details: Test succeeded.
         webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 - name: Test Warn
-    uses: rjstone/discord-webhook-notify@v1
+    uses: BubbleProd/discord-webhook-notify@v2
     with:
         severity: warn
         details: Test warning.
         webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 - name: Test Error
-    uses: rjstone/discord-webhook-notify@v1
+    uses: BubbleProd/discord-webhook-notify@v2
     with:
         severity: error
         details: Test error.
@@ -112,15 +112,16 @@ This shows you where each custom input shows up in the formatting of the Discord
 
 ```
 - name: Test Custom
-    uses: rjstone/discord-webhook-notify@v1
+    uses: BubbleProd/discord-webhook-notify@v2
     with:
         severity: info
         username: CustomUsername
-        color: '#ff00aa'
+        color: '#ff00aa'        
+        title: A title.
         avatarUrl: https://github.githubassets.com/images/modules/logos_page/Octocat.png
         description: This is a custom description.
         details: 'Custom details: Somebody set up us the bomb.'
-        footer: This is a footer.
+        footer: This is a footer.       
         text: This is where text goes.
         webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 ```
