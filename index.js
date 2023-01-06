@@ -60,7 +60,8 @@ async function run() {
         const severity = core.getInput('severity');
         const description = core.getInput('description');
         const details = core.getInput('details');
-        const footer = core.getInput('footer');
+        const footer = core.getInput('footer');       
+		const title = core.getInput('title');
         const text = core.getInput('text');
         const username = core.getInput('username');
         const color = core.getInput('color');
@@ -78,6 +79,7 @@ async function run() {
                         .setName(username || default_username)
                         .setAvatar(avatarUrl || default_avatarUrl)
                         .setColor(color || default_colors[severity])
+                        .setTitle(title || "")
                         .setDescription((description || await getDefaultDescription()) + "\n" + details)
                         .setFooter(footer || ("Severity: " + long_severity[severity]))
                         .setText(text)
